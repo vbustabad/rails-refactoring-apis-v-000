@@ -7,6 +7,6 @@ class RepositoriesController < ApplicationController
   def create
     @service = GithubService.new({"access_token" => session[:token]})
     @service.create_repo(params[:name])
-    redirect_to '/'
+    redirect_to root_path
   end
 end
