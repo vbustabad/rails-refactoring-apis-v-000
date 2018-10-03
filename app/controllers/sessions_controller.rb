@@ -3,7 +3,7 @@ class SessionsController < ApplicationController
 
   def create
     @service = GithubService.new
-    @service.authenticate!(ENV['GITHUB_CLIENT'], ENV['GITHUB_SECRET'], params[:code])
+    session[:token] = @service.authenticate!(ENV['GITHUB_CLIENT'], ENV['GITHUB_SECRET'], params[:code])
     @service.get_username
     redirect_to root_path
   end
